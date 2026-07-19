@@ -1,0 +1,16 @@
+<header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+        <div class="logo">{{ site.params.logo.logoText | default('Terminal') }}</div>
+      </a>
+    </div>
+  </div>
+  <nav class="navigation-menu">
+    <ul class="navigation-menu__inner menu--desktop">
+      {% for item in site.nav.items | sort_by("weight") %}
+        <li><a href="{{ item.url }}">{{ item.label }}</a></li>
+      {% endfor %}
+    </ul>
+  </nav>
+</header>

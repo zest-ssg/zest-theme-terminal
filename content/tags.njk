@@ -1,0 +1,17 @@
+<!-- @title Tags -->
+<!-- @layout base -->
+
+<div class="terms terms-index">
+  <h2>Tags</h2>
+  <p>Browse every post organised by topic. Each tag links to its own archive page.</p>
+
+  <ul class="terms-tags">
+    {% for t in tags %}
+    {% set tagCount = pages | by_tag(t) | length %}
+    <li class="term-tag">
+      <a href="/tags/{{ t }}/">#{{ t }}</a>
+      {% if tagCount > 0 %}<span class="term-tag__count">{{ tagCount }}</span>{% endif %}
+    </li>
+    {% endfor %}
+  </ul>
+</div>

@@ -1,0 +1,4 @@
+// terminal.zcss — placeholder for user customisation (indent syntax).
+// Drop your own overrides here: colours, fonts, spacing, etc.
+// The theme's core styles live in main.zcss and the other *.zcss files.
+// You can grab a colour scheme from https://panr.github.io/terminal-css/

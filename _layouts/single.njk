@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="{{ site.language | default('en') }}" data-terminal-theme="terminal-dark">
+{{ include head.html }}
+<body>
+{% set container = 'container' %}
+{% if site.params.fullWidthTheme == 'True' %}{% set container = 'container full' %}{% elif site.params.centerTheme == 'True' %}{% set container = 'container center' %}{% endif %}
+<div class="{{ container }}{% if site.params.oneHeadingSize == 'True' %} headings--one-size{% endif %}">
+{{ include header.html }}
+<div class="content">
+  <main class="post">
+    <article class="post">
+      <header class="post__header">
+        <h1 class="post-title">{{ page.title }}</h1>
+        <div class="post-meta">
+          {% if page.date %}<time class="post-date" datetime="{{ page.date }}">{{ page.date | date("MMM d, yyyy") }}</time>{% endif %}
+          {% if content %}<span class="post-read-time">{{ content | striptags | wordcount }} words</span>{% endif %}
+        </div>
+      </header>
+      <div class="post-content">
+        {{ content | safe }}
+      </div>
+      {% set posts = pages | by_collection("posts") | sort("date") | reverse %}
+      {% for p in posts %}
+        {% if p.url == page.url %}
+        <footer class="post-tags">
+          {% for t in p.tags %}<a class="post-tag" href="/tags/{{ t }}/">#{{ t }}</a> {% endfor %}
+        </footer>
+        <nav class="post-nav">
+          {% if loop.previtem and loop.previtem.date %}<a class="post-nav__prev" href="{{ loop.previtem.url }}">&larr; {{ loop.previtem.title }}</a>{% endif %}
+          {% if loop.nextitem and loop.nextitem.date %}<a class="post-nav__next" href="{{ loop.nextitem.url }}">{{ loop.nextitem.title }} &rarr;</a>{% endif %}
+        </nav>
+        {% endif %}
+      {% endfor %}
+    </article>
+  </main>
+</div>
+{{ include footer.html }}
+</div>
+{{ include scripts.html }}
+</body>
+</html>

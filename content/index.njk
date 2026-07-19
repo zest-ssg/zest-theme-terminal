@@ -1,0 +1,32 @@
+<!-- @title Home -->
+<!-- @layout base -->
+
+<div class="posts posts-index">
+  <h1>Terminal</h1>
+  <p>
+    Welcome to <strong>Terminal</strong> &mdash; a minimal, fast, and responsive
+    theme ported from
+    <a href="https://github.com/panr/hugo-theme-terminal">hugo-theme-terminal</a>
+    to the <strong>Zest SSG</strong> framework.
+  </p>
+
+  <h2>Recent posts</h2>
+
+  {% set posts = pages | by_collection("posts", true) | sort("date") | reverse %}
+  {% for p in posts %}
+  <article class="post">
+    <div class="post-title"><a href="{{ p.url }}">{{ p.title }}</a></div>
+    <div class="post-meta">
+      {{ p.date | date("MMM d, yyyy") }}
+      {% if p.tags %}<span class="post-meta__tags">{% for t in p.tags %}<a href="/tags/{{ t }}/">#{{ t }}</a> {% endfor %}</span>{% endif %}
+    </div>
+    {% if p.description %}<div class="post-summary">{{ p.description }}</div>{% endif %}
+  </article>
+  {% else %}
+  <p>No posts yet. Add a <code>.zest.fsx</code> file under <code>content/posts/</code>.</p>
+  {% endfor %}
+
+  {% if posts | length > 5 %}
+  <p class="posts__more"><a href="/posts/">View all posts &rarr;</a></p>
+  {% endif %}
+</div>

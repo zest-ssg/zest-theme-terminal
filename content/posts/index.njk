@@ -1,0 +1,17 @@
+<!-- @title Posts -->
+<!-- @layout base -->
+
+<div class="posts posts-index">
+  <h2>Posts</h2>
+  <p>All posts published on this site, newest first.</p>
+
+  {% set posts = pages | by_collection("posts", true) | sort("date") | reverse %}
+  {% for p in posts %}
+  <article class="post">
+    <div class="post-title"><a href="{{ p.url }}">{{ p.title }}</a></div>
+    <div class="post-meta">{{ p.date | date("MMM d, yyyy") }}</div>
+    {% if p.description %}<div class="post-summary">{{ p.description }}</div>{% endif %}
+    {% if p.tags %} {% for t in p.tags %} <a class="post-tag" href="/tags/{{ t }}/">#{{ t }}</a> {% endfor %} {% endif %}
+  </article>
+  {% endfor %}
+</div>

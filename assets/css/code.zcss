@@ -1,0 +1,107 @@
+// code.zcss — code blocks & syntax highlight (indent syntax)
+
+let fg5 = color-mix(in srgb, var(--foreground) 5%, transparent)
+let fg10 = color-mix(in srgb, var(--foreground) 10%, transparent)
+let accent10 = color-mix(in srgb, var(--accent) 10%, transparent)
+let accent15 = color-mix(in srgb, var(--accent) 15%, transparent)
+
+:root
+  --code-border = fg10
+
+pre:not(.chroma)
+  padding = 10px
+
+pre.chroma
+  margin = 0
+  padding = 10px 0
+  color = var(--foreground)
+
+pre code
+  color = var(--foreground)
+  border = none
+
+code
+  color = var(--accent)
+  text-size-adjust = 100%
+  -ms-text-size-adjust = 100%
+  -moz-text-size-adjust = 100%
+  -webkit-text-size-adjust = 100%
+
+.highlight
+  position = relative
+  margin = 20px 0
+  border = 1px solid var(--code-border)
+  pre
+    border = none
+
+.code-title
+  display = flex
+  align-items = center
+  justify-content = space-between
+  background = fg5
+  border-bottom = 1px solid var(--code-border)
+  color = var(--comment)
+  text-transform = uppercase
+  font-size = calc(var(--font-size) * 0.8)
+  padding = 6px 10px
+  line-height = 1
+  .copy-button
+    z-index = 1
+    background = color-mix(in srgb, var(--foreground) 5%, var(--background))
+  &:hover .copy-button
+    display = inline-block
+  .copy-button:hover
+    background = accent10
+
+.copy-button
+  position = relative
+  display = inline-flex
+  align-items = center
+  justify-content = center
+  padding = 3px 8px
+  text-decoration = none
+  text-align = center
+  font-size = 13px
+  font-weight = 500
+  border = 1px solid accent15
+  appearance = none
+  cursor = pointer
+  outline = none
+
+.collapsable-code
+  position = relative
+  width = 100%
+  margin = 20px 0
+  border = 1px solid var(--accent)
+  .highlight
+    margin = 0
+
+.collapsable-code__title
+  display = inline-flex
+  align-items = center
+  flex = 1
+  color = var(--accent)
+  padding = 3px 10px
+  font-size = calc(var(--font-size) * 0.9)
+  text-overflow = ellipsis
+  white-space = nowrap
+  overflow = hidden
+
+.collapsable-code__language
+  color = var(--accent)
+  border = 1px solid var(--accent)
+  border-bottom = none
+  text-transform = uppercase
+  padding = 3px 10px
+
+.collapsable-code summary
+  color = var(--accent)
+  padding = 0 10px
+  cursor = pointer
+  &:hover
+    background = accent10
+
+.collapsable-code pre
+  margin-top = 0
+  &::first-line
+    line-height = 0

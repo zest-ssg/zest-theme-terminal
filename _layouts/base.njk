@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="{{ site.language | default('en') }}" data-terminal-theme="terminal-dark">
+{{ include head.html }}
+<body>
+{% set container = 'container' %}
+{% if site.params.fullWidthTheme == 'True' %}{% set container = 'container full' %}{% elif site.params.centerTheme == 'True' %}{% set container = 'container center' %}{% endif %}
+<div class="{{ container }}{% if site.params.oneHeadingSize == 'True' %} headings--one-size{% endif %}">
+{{ include header.html }}
+<div class="content">
+  {{ content | safe }}
+</div>
+{{ include footer.html }}
+</div>
+{{ include scripts.html }}
+</body>
+</html>

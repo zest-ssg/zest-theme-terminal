@@ -1,0 +1,77 @@
+// syntax.zcss — Chroma syntax highlight (indent syntax)
+// Token classes grouped by tone via @each, replacing ~270 lines of
+// repetitive single-property rules.
+
+let second = color-mix(in srgb, var(--accent) 70%, transparent)
+let comment = color-mix(in srgb, var(--foreground) 50%, transparent)
+let fg5 = color-mix(in srgb, var(--foreground) 5%, transparent)
+
+:root
+  --first-tone = var(--accent)
+  --second-tone = second
+  --comment = comment
+
+.chroma
+  overflow = auto
+  .lnlinks
+    outline = none
+    text-decoration = none
+    color = inherit
+  .lntd
+    width = 100%
+    vertical-align = top
+    padding = 0
+    margin = 0
+    border = 0
+    &:first-child
+      width = auto
+    code
+      display = grid
+  .lntable
+    width = 100%
+    border-spacing = 0
+    padding = 0
+    margin = 0
+    border = 0
+  .hl
+    background-color = fg5 !important
+  .lnt
+    color = var(--comment)
+    white-space = pre
+    -webkit-user-select = none
+    user-select = none
+    padding = 0 10px
+  .ln
+    color = var(--comment)
+    white-space = pre
+    -webkit-user-select = none
+    user-select = none
+    margin-right = 0.8em
+    padding = 0 0.4em 0 0
+  .line
+    display = flex
+    padding = 0 10px
+  .nc
+    color = var(--foreground)
+  .language-php .cp
+    color = var(--foreground)
+
+// Identifiers & numbers — first tone
+@each $tok in (n, nb, bp, no, nd, ni, ne, nf, fm, nl, nn, nx, py, nt, nv, vc, vg, vi, vm, m, mb, mf, mh, mi, il, mo, gd)
+  .chroma .$tok
+    color = var(--first-tone)
+
+// Keywords & attributes — second tone
+@each $tok in (k, kc, kd, kn, kp, kr, kt, na, gi)
+  .chroma .$tok
+    color = var(--second-tone)
+
+// Strings, operators, punctuation — foreground
+@each $tok in (s, sa, sb, sc, dl, sd, s2, se, sh, si, sx, sr, s1, ss, o, ow, p)
+  .chroma .$tok
+    color = var(--foreground)
+
+// Comments — muted
+@each $tok in (c, ch, cm, c1, cs, cp, cpf)
+  .chroma .$tok
+    color = var(--comment)

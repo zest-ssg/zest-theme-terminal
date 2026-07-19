@@ -1,0 +1,24 @@
+# Zest SSG configuration for the "Terminal" theme.
+# Ported from hugo-theme-terminal (https://github.com/panr/hugo-theme-terminal).
+# See https://github.com/zest-ssg/docs for the full configuration reference.
+
+title = "Terminal"
+base_url = "https://example.com"
+description = "A minimal, fast, and responsive theme for Zest SSG."
+author = "Zest"
+language = "en"
+
+# Layout files use the .njk extension, which are always rendered through the
+# Nunjucks engine regardless of this setting. We set it explicitly so any
+# .html / content preprocessing is also handled by Nunjucks.
+template_engine = "nunjucks"
+
+# Taxonomies default to tag/tags + category/categories in Zest, so an explicit
+# block is not required. Kept here for clarity / override.
+[[taxonomies]]
+name = "tag"
+plural = "tags"
+
+[[taxonomies]]
+name = "category"
+plural = "categories"

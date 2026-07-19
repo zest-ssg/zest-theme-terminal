@@ -1,0 +1,17 @@
+<footer class="footer">
+  <div class="footer__inner">
+    {% if site.socials %}
+    <div class="footer__social">
+      {% for s in site.socials %}
+      <a class="footer__social-link" href="{{ s.url }}" rel="me noopener" aria-label="{{ s.label }}">
+        <span class="icon icon-{{ s.icon }}" aria-hidden="true"></span>
+        {{ s.label }}
+      </a>
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="copyright">
+      <span>© {{ "now" | date("yyyy") }} Powered by <a href="https://github.com/zest-ssg">Zest</a> :: Theme Terminal</span>
+    </div>
+  </div>
+</footer>

@@ -1,0 +1,23 @@
+# Primary navigation for the Terminal theme.
+# Exposed to templates as `site.nav.items` (an iterable array).
+# Each item supports: label, url, weight (lower = first).
+
+[[items]]
+label = "Home"
+url = "/"
+weight = 1
+
+[[items]]
+label = "Posts"
+url = "/posts/"
+weight = 2
+
+[[items]]
+label = "Tags"
+url = "/tags/"
+weight = 3
+
+[[items]]
+label = "About"
+url = "/about/"
+weight = 4

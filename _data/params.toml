@@ -1,0 +1,18 @@
+# Theme parameters for the Terminal theme.
+# Exposed to templates as `site.params.*` (e.g. `site.params.subtitle`).
+
+subtitle = "A minimal, fast, and responsive theme for Zest."
+dateFormat = "MMM d, yyyy"
+showReadTime = true
+fullWidthTheme = false
+centerTheme = false
+oneHeadingSize = false
+showMenuItems = 0
+readMore = "Read More"
+readOtherPosts = "Read other posts"
+missingContentMessage = "We could not find the page you were looking for."
+missingBackButtonLabel = "Back to home page"
+copyright = "© 2026 Powered by Zest"
+
+[logo]
+logoText = "Terminal"

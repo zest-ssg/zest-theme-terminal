@@ -1,0 +1,17 @@
+<!-- @title Posts tagged hugo -->
+<!-- @layout base -->
+
+<div class="posts posts-index">
+  <h2>Posts tagged &ldquo;hugo&rdquo;</h2>
+
+  {% set posts = pages | pages_by_tag("hugo") | sort("date") | reverse %}
+  {% for p in posts %}
+  <article class="post">
+    <div class="post-title"><a href="{{ p.url }}">{{ p.title }}</a></div>
+    <div class="post-meta">{{ p.date | date("MMM d, yyyy") }}</div>
+    {% if p.description %}<div class="post-summary">{{ p.description }}</div>{% endif %}
+  </article>
+  {% else %}
+  <p>No posts found with this tag.</p>
+  {% endfor %}
+</div>
